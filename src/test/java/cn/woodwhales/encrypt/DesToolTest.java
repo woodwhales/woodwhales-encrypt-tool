@@ -13,20 +13,21 @@ class DesToolTest {
     public void testEncryptWithoutKey() throws Exception {
         String encrypt = DesTool.encryptWithKey(originContent, key);
         String decrypt = DesTool.decryptWithKey(encrypt, key);
-        Assertions.assertEquals(originContent, decrypt);
 
         System.out.println("encrypt = " + encrypt);
         System.out.println("decrypt = " + decrypt);
+        Assertions.assertEquals(originContent, decrypt);
+
     }
 
     @Test
     public void testEncryptWithKeyAndIv() throws Exception {
         String encrypt = DesTool.encryptWithKeyAndIv(originContent, key, iv);
         String decrypt = DesTool.decryptWithKeyAndIv(encrypt, key, iv);
-        Assertions.assertEquals(originContent, decrypt);
 
         System.out.println("encrypt = " + encrypt);
         System.out.println("decrypt = " + decrypt);
+        Assertions.assertEquals(originContent, decrypt);
     }
 
 }
