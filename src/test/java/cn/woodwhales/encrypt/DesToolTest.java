@@ -17,7 +17,6 @@ class DesToolTest {
         System.out.println("encrypt = " + encrypt);
         System.out.println("decrypt = " + decrypt);
         Assertions.assertEquals(originContent, decrypt);
-
     }
 
     @Test

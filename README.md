@@ -2,6 +2,20 @@
 
 > java 加解密工具
 
+## 3DES 加解密
+
+### 带偏移量的 3DES 加解密
+
+DESede/CBC/PKCS5Padding 加密：cn.woodwhales.encrypt.DesedeTool.encryptWithKeyAndIv
+
+DESede/CBC/PKCS5Padding 解密：cn.woodwhales.encrypt.DesedeTool.decryptWithKeyAndIv
+
+### 普通 3DES 的加解密
+
+DESede/ECB/PKCS5Padding 加密：cn.woodwhales.encrypt.DesedeTool.encryptWithKey
+
+DESede/ECB/PKCS5Padding 解密：cn.woodwhales.encrypt.DesedeTool.decryptWithKey
+
 ## DES 加解密
 
 ### 带偏移量的 DES 加解密
@@ -29,3 +43,4 @@ AES/ECB/PKCS5Padding 解密：cn.woodwhales.encrypt.AesTool.decryptWithKey
 AES/CBC/PKCS5Padding 解密：cn.woodwhales.encrypt.AesTool.encryptWithKeyAndIv
 
 AES/CBC/PKCS5Padding 解密：cn.woodwhales.encrypt.AesTool.decryptWithKeyAndIv
+

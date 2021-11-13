@@ -1,8 +1,8 @@
 package cn.woodwhales.encrypt;
 
 import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Objects;
@@ -14,7 +14,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  */
 public class BaseCryptoTool {
 
-    protected static Cipher buildCipher(String algorithm, int mod, SecretKeySpec key, IvParameterSpec iv) throws Exception {
+    protected static Cipher buildCipher(String algorithm, int mod, SecretKey key, IvParameterSpec iv) throws Exception {
         Cipher cipher = Cipher.getInstance(algorithm);
         if(Objects.isNull(iv)) {
             cipher.init(mod, key);
@@ -24,19 +24,19 @@ public class BaseCryptoTool {
         return cipher;
     }
 
-    protected static Cipher buildEncryptCipher(String algorithm, SecretKeySpec key, IvParameterSpec iv) throws Exception {
+    protected static Cipher buildEncryptCipher(String algorithm, SecretKey key, IvParameterSpec iv) throws Exception {
         return buildCipher(algorithm, Cipher.ENCRYPT_MODE, key, iv);
     }
 
-    protected static Cipher buildEncryptCipher(String algorithm, SecretKeySpec key) throws Exception {
+    protected static Cipher buildEncryptCipher(String algorithm, SecretKey key) throws Exception {
         return buildCipher(algorithm, Cipher.ENCRYPT_MODE, key, null);
     }
 
-    protected static Cipher buildDecryptCipher(String algorithm, SecretKeySpec key, IvParameterSpec iv) throws Exception {
+    protected static Cipher buildDecryptCipher(String algorithm, SecretKey key, IvParameterSpec iv) throws Exception {
         return buildCipher(algorithm, Cipher.DECRYPT_MODE, key, iv);
     }
 
-    protected static Cipher buildDecryptCipher(String algorithm, SecretKeySpec key) throws Exception {
+    protected static Cipher buildDecryptCipher(String algorithm, SecretKey key) throws Exception {
         return buildCipher(algorithm, Cipher.DECRYPT_MODE, key, null);
     }
 
@@ -70,7 +70,7 @@ public class BaseCryptoTool {
             throw new RuntimeException(String.format("%s不允许为空", valueDescription));
         }
 
-        if(Objects.isNull(exceptLengths)) {
+        if(Objects.isNull(exceptLengths) || exceptLengths.length == 0) {
             return value.getBytes(UTF_8);
         }
 
